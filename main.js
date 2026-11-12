@@ -277,28 +277,31 @@
 
   (function buildGallery(){
     const grid = $('#galleryGrid');
+    grid.innerHTML = '';
 
-    galleryImages = C.heroSlides.map(s=>s.image);
+    galleryImages = C.heroSlides.map(s => s.image);
 
-    galleryImages.forEach((src,i)=>{
+    galleryImages.forEach((src, i) => {
       const item = document.createElement('div');
       item.className = 'gallery-item reveal';
-      item.style.height = (220 + (i % 3) * 60) + 'px';
 
       const img = document.createElement('img');
       img.src = src;
-      img.alt = `Shiva and Rasika - Photo ${i+1}`;
+      img.alt = `Shiva and Rasika - Photo ${i + 1}`;
       img.loading = 'lazy';
+
+      img.onerror = function(){
+        console.error('Gallery image failed to load:', src);
+      };
 
       item.appendChild(img);
 
       const overlay = document.createElement('div');
       overlay.className = 'gallery-overlay';
       overlay.textContent = 'Shiva & Rasika';
-
       item.appendChild(overlay);
 
-      item.addEventListener('click',()=>openLightbox(i));
+      item.addEventListener('click', () => openLightbox(i));
 
       grid.appendChild(item);
     });
@@ -313,36 +316,36 @@
   }
 
   function renderLightbox(){
-    const img = $('#lightboxImg');
-
-    img.src = galleryImages[lightboxIndex];
-    img.alt = `Shiva and Rasika - Photo ${lightboxIndex+1}`;
+    $('#lightboxImg').src = galleryImages[lightboxIndex];
+    $('#lightboxImg').alt = `Shiva and Rasika - Photo ${lightboxIndex + 1}`;
   }
 
-  $('#lightboxClose').addEventListener('click',()=>$('#lightbox').classList.remove('active'));
+  $('#lightboxClose').addEventListener('click', () => {
+    $('#lightbox').classList.remove('active');
+  });
 
-  $('#lightbox').addEventListener('click',e=>{
-    if(e.target.id==='lightbox'){
+  $('#lightbox').addEventListener('click', e => {
+    if(e.target.id === 'lightbox'){
       $('#lightbox').classList.remove('active');
     }
   });
 
-  $('#lightboxPrev').addEventListener('click',()=>{
-    lightboxIndex = (lightboxIndex-1+galleryImages.length)%galleryImages.length;
+  $('#lightboxPrev').addEventListener('click', () => {
+    lightboxIndex = (lightboxIndex - 1 + galleryImages.length) % galleryImages.length;
     renderLightbox();
   });
 
-  $('#lightboxNext').addEventListener('click',()=>{
-    lightboxIndex = (lightboxIndex+1)%galleryImages.length;
+  $('#lightboxNext').addEventListener('click', () => {
+    lightboxIndex = (lightboxIndex + 1) % galleryImages.length;
     renderLightbox();
   });
 
-  document.addEventListener('keydown',e=>{
+  document.addEventListener('keydown', e => {
     if(!$('#lightbox').classList.contains('active')) return;
 
-    if(e.key==='Escape') $('#lightbox').classList.remove('active');
-    if(e.key==='ArrowLeft') $('#lightboxPrev').click();
-    if(e.key==='ArrowRight') $('#lightboxNext').click();
+    if(e.key === 'Escape') $('#lightbox').classList.remove('active');
+    if(e.key === 'ArrowLeft') $('#lightboxPrev').click();
+    if(e.key === 'ArrowRight') $('#lightboxNext').click();
   });
 
   // Mobile swipe support
@@ -350,17 +353,17 @@
     let x0 = null;
     const lb = $('#lightbox');
 
-    lb.addEventListener('touchstart',e=>{
+    lb.addEventListener('touchstart', e => {
       x0 = e.touches[0].clientX;
     });
 
-    lb.addEventListener('touchend',e=>{
-      if(x0===null) return;
+    lb.addEventListener('touchend', e => {
+      if(x0 === null) return;
 
-      const dx = e.changedTouches[0].clientX-x0;
+      const dx = e.changedTouches[0].clientX - x0;
 
-      if(Math.abs(dx)>50){
-        dx>0 ? $('#lightboxPrev').click() : $('#lightboxNext').click();
+      if(Math.abs(dx) > 50){
+        dx > 0 ? $('#lightboxPrev').click() : $('#lightboxNext').click();
       }
 
       x0 = null;
