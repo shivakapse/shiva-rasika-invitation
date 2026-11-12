@@ -68,17 +68,18 @@ const WEDDING_CONFIG = {
   // ------------------------------------------------------------------------
   // HERO SLIDER
   // ------------------------------------------------------------------------
-  heroSlides: [
-    { image: "images/couple1.JPG", caption: "Two families, one blessing" },
-    { image: "images/couple2.JPG", caption: "A promise written in the stars" },
-    { image: "images/couple3.JPG", caption: "Forever begins in Chimur" },
-    { image: "images/0B5A1764.JPG", caption: "" },
-    { image: "images/0B5A1769.JPG", caption: "" },
-    { image: "images/0B5A2009.JPG", caption: "" },
-    { image: "images/0B5A2011.JPG", caption: "" },
-    { image: "images/0B5A2019.JPG", caption: "" },
-    { image: "images/0B5A2062.JPG", caption: "" }
-  ],
+  
+heroSlides: [
+  { image: "images/couple1.JPG", caption: "Our beautiful journey" },
+  { image: "images/couple2.JPG", caption: "A moment of love" },
+  { image: "images/couple3.JPG", caption: "Together forever" },
+  { image: "images/couple4.JPG", caption: "Memories together" },
+  { image: "images/couple5.JPG", caption: "A promise of forever" },
+  { image: "images/couple6.JPG", caption: "Two hearts, one journey" },
+  { image: "images/couple7.jpg", caption: "A special moment" },
+  { image: "images/couple8.JPG", caption: "Happiness together" },
+  { image: "images/couple9.JPG", caption: "Our story continues" }
+],
 
   // ------------------------------------------------------------------------
   // OUR STORY TIMELINE
