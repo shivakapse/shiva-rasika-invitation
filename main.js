@@ -268,57 +268,102 @@
     });
   })();
 
+
   /* ---------------------------------------------------------------- */
   /* 9. GALLERY + LIGHTBOX                                             */
   /* ---------------------------------------------------------------- */
+
   let galleryImages = [];
+
   (function buildGallery(){
     const grid = $('#galleryGrid');
+
     galleryImages = C.heroSlides.map(s=>s.image);
+
     galleryImages.forEach((src,i)=>{
       const item = document.createElement('div');
       item.className = 'gallery-item reveal';
-      item.style.height = (220+ (i%3)*60)+'px';
-      item.innerHTML = `<div class="ph" style="height:100%;"><span><i class="fa-solid fa-image"></i></span></div>
-        <div class="gallery-overlay">Shiva &amp; Rasika</div>`;
+      item.style.height = (220 + (i % 3) * 60) + 'px';
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `Shiva and Rasika - Photo ${i+1}`;
+      img.loading = 'lazy';
+
+      item.appendChild(img);
+
+      const overlay = document.createElement('div');
+      overlay.className = 'gallery-overlay';
+      overlay.textContent = 'Shiva & Rasika';
+
+      item.appendChild(overlay);
+
       item.addEventListener('click',()=>openLightbox(i));
+
       grid.appendChild(item);
     });
   })();
 
   let lightboxIndex = 0;
+
   function openLightbox(i){
     lightboxIndex = i;
     renderLightbox();
     $('#lightbox').classList.add('active');
   }
+
   function renderLightbox(){
-    // Real photo would set src=galleryImages[lightboxIndex]; using placeholder art for now.
-    $('#lightboxImg').src = 'data:image/svg+xml;utf8,'+encodeURIComponent(
-      `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="100%" height="100%" fill="#5C0011"/><text x="50%" y="50%" font-size="42" fill="#E8CC7A" text-anchor="middle" font-family="Georgia" dy=".3em">Shiva &amp; Rasika</text></svg>`
-    );
+    const img = $('#lightboxImg');
+
+    img.src = galleryImages[lightboxIndex];
+    img.alt = `Shiva and Rasika - Photo ${lightboxIndex+1}`;
   }
+
   $('#lightboxClose').addEventListener('click',()=>$('#lightbox').classList.remove('active'));
-  $('#lightbox').addEventListener('click',e=>{ if(e.target.id==='lightbox') $('#lightbox').classList.remove('active'); });
-  $('#lightboxPrev').addEventListener('click',()=>{ lightboxIndex=(lightboxIndex-1+galleryImages.length)%galleryImages.length; renderLightbox(); });
-  $('#lightboxNext').addEventListener('click',()=>{ lightboxIndex=(lightboxIndex+1)%galleryImages.length; renderLightbox(); });
+
+  $('#lightbox').addEventListener('click',e=>{
+    if(e.target.id==='lightbox'){
+      $('#lightbox').classList.remove('active');
+    }
+  });
+
+  $('#lightboxPrev').addEventListener('click',()=>{
+    lightboxIndex = (lightboxIndex-1+galleryImages.length)%galleryImages.length;
+    renderLightbox();
+  });
+
+  $('#lightboxNext').addEventListener('click',()=>{
+    lightboxIndex = (lightboxIndex+1)%galleryImages.length;
+    renderLightbox();
+  });
+
   document.addEventListener('keydown',e=>{
     if(!$('#lightbox').classList.contains('active')) return;
+
     if(e.key==='Escape') $('#lightbox').classList.remove('active');
     if(e.key==='ArrowLeft') $('#lightboxPrev').click();
     if(e.key==='ArrowRight') $('#lightboxNext').click();
   });
 
-  // swipe support
+  // Mobile swipe support
   (function(){
-    let x0=null;
+    let x0 = null;
     const lb = $('#lightbox');
-    lb.addEventListener('touchstart',e=>{ x0=e.touches[0].clientX; });
+
+    lb.addEventListener('touchstart',e=>{
+      x0 = e.touches[0].clientX;
+    });
+
     lb.addEventListener('touchend',e=>{
       if(x0===null) return;
-      const dx = e.changedTouches[0].clientX - x0;
-      if(Math.abs(dx)>50){ dx>0 ? $('#lightboxPrev').click() : $('#lightboxNext').click(); }
-      x0=null;
+
+      const dx = e.changedTouches[0].clientX-x0;
+
+      if(Math.abs(dx)>50){
+        dx>0 ? $('#lightboxPrev').click() : $('#lightboxNext').click();
+      }
+
+      x0 = null;
     });
   })();
 
