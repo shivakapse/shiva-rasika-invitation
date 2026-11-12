@@ -854,3 +854,60 @@ footer{
 .gallery-item:hover img {
   transform: scale(1.06);
 }
+
+
+/* =====================================================
+   WEDDING PHOTO GALLERY — FINAL LAYOUT
+   ===================================================== */
+
+#galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+#galleryGrid .gallery-item {
+  position: relative;
+  width: 100%;
+  height: 340px !important;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #5c0011;
+}
+
+#galleryGrid .gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+#galleryGrid .gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+@media (max-width: 768px) {
+  #galleryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #galleryGrid .gallery-item {
+    height: 230px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #galleryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  #galleryGrid .gallery-item {
+    height: 320px !important;
+  }
+}
+
