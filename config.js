@@ -48,17 +48,19 @@ const WEDDING_CONFIG = {
   // ------------------------------------------------------------------------
   // RECEPTION DETAILS
   // ------------------------------------------------------------------------
-  reception: {
-    date: "2026-12-19",
-    dateDisplay: "19 December 2026",
-    day: "Saturday",
-    time: "6:30 PM onwards",
+  
+reception: {
+  date: "2026-12-19",
+  dateDisplay: "19 December 2026",
+  day: "Saturday",
+  time: "6:30 PM onwards",
 
-    venueName: "Amrut Celebrations",
-    venueAddress: "Wadgaon Road, Yavatmal, Maharashtra",
+  venueName: "Amrut Celebrations",
+  venueAddress: "Wadgaon Road, Yavatmal, Maharashtra 445002",
 
-    mapsUrl: "https://www.google.com/search?kgmid=%2Fg%2F11h_yb70jn"
-  },
+  mapsQuery: "Amrut Celebrations, MSH 3, Tulja Nagari, Wadgaon Road, Yavatmal, Maharashtra 445002"
+},
+
 
   // ------------------------------------------------------------------------
   // OPENING / SPLASH

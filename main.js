@@ -434,16 +434,18 @@ if (receptionAddress) {
   receptionAddress.textContent = C.reception.venueAddress;
 }
 
+
 if (receptionNavBtn) {
   const receptionDestination =
-    `${C.reception.venueName}, ${C.reception.venueAddress}`;
+    C.reception.mapsQuery;
 
   receptionNavBtn.href =
     `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(receptionDestination)}&travelmode=driving`;
 
-  receptionNavBtn.target = '_blank';
-  receptionNavBtn.rel = 'noopener noreferrer';
+  receptionNavBtn.target = "_blank";
+  receptionNavBtn.rel = "noopener noreferrer";
 }
+
 
 // ================================================================
 // LIVE CITY TEMPERATURES - CHIMUR AND YAVATMAL
