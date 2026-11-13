@@ -247,18 +247,7 @@
       <h2 class="section-title reveal">The Venue</h2>
     </div>
 
-    <div class="venue-grid" style="margin-top:44px;">
-
-      <!-- WEDDING VENUE MAP -->
-      <div class="venue-map reveal">
-        <iframe
-          id="venueMap"
-          src=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Wedding Venue Map">
-        </iframe>
-      </div>
+    <div class="venue-grid" style="margin-top:44px; grid-template-columns:1fr;">
 
       <!-- VENUE INFORMATION -->
       <div class="venue-info reveal">
@@ -344,12 +333,17 @@
           Navigate to Reception Venue
         </a>
 
-        <!-- WEATHER -->
-        <div class="weather-chip" id="weatherChip">
-          <i class="fa-solid fa-cloud-sun"></i>
-          <span id="weatherText">
-            Checking weather for the big day&hellip;
-          </span>
+        <!-- LIVE TEMPERATURE FOR BOTH EVENT CITIES -->
+        <div class="weather-chip" id="weatherChip" style="display:flex; flex-direction:column; align-items:flex-start; gap:10px; width:100%; box-sizing:border-box;">
+          <div style="display:flex; align-items:center; gap:9px;">
+            <i class="fa-solid fa-cloud-sun"></i>
+            <strong>Current Temperature</strong>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:10px 24px; width:100%;">
+            <div><span style="font-weight:600;">Chimur:</span> <span id="weatherChimur">Loading temperature...</span></div>
+            <div><span style="font-weight:600;">Yavatmal:</span> <span id="weatherYavatmal">Loading temperature...</span></div>
+          </div>
+          <small style="opacity:.75;">Live weather · Updates when the invitation is opened</small>
         </div>
 
       </div>
