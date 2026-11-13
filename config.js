@@ -17,11 +17,13 @@ const WEDDING_CONFIG = {
       family: "Kapse Family",
       instagram: "mr.shiva_kapse"
     },
+
     bride: {
       firstName: "Rasika",
       fullName: "Rasika Pise",
       family: "Pise Family"
     },
+
     hashtag: "#ShivaWedsRasika"
   },
 
@@ -30,13 +32,15 @@ const WEDDING_CONFIG = {
   // ------------------------------------------------------------------------
   wedding: {
     date: "2026-12-18T18:10:00",
-    dateDisplay: "18th December 2026",
+    dateDisplay: "18 December 2026",
     day: "Friday",
     time: "6:10 PM",
+
     venueName: "Milan Hall",
     venueAddress: "Milan Hall, Chimur, District Chandrapur, Maharashtra 442903",
     venueCity: "Chimur, Chandrapur",
     venuePincode: "442903",
+
     mapsQuery: "Milan Hall, Chimur, Chandrapur, Maharashtra 442903",
     mapsEmbedQuery: "Milan+Hall,+Chimur,+Chandrapur,+Maharashtra+442903"
   },
@@ -47,9 +51,12 @@ const WEDDING_CONFIG = {
   reception: {
     date: "2026-12-19",
     dateDisplay: "19 December 2026",
+    day: "Saturday",
     time: "6:30 PM onwards",
+
     venueName: "Amrut Celebrations",
     venueAddress: "Wadgaon Road, Yavatmal, Maharashtra",
+
     mapsUrl: "https://www.google.com/search?kgmid=%2Fg%2F11h_yb70jn"
   },
 
@@ -62,6 +69,9 @@ const WEDDING_CONFIG = {
     duration: 3200
   },
 
+  // ------------------------------------------------------------------------
+  // ENVELOPE
+  // ------------------------------------------------------------------------
   envelope: {
     seal: "S \u2022 R",
     prompt: "Tap the seal to open your invitation",
@@ -79,24 +89,52 @@ const WEDDING_CONFIG = {
 
   // ------------------------------------------------------------------------
   // HERO SLIDER
-  // Retained independently of the Photo Gallery section.
+  // These images are independent of the Photo Gallery section.
+  // Keep filenames and letter case exactly as uploaded to GitHub.
   // ------------------------------------------------------------------------
   heroSlides: [
-    { image: "images/couple1.JPG", caption: "Our beautiful journey" },
-    { image: "images/couple2.JPG", caption: "A moment of love" },
-    { image: "images/couple3.JPG", caption: "Together forever" },
-    { image: "images/couple4.JPG", caption: "Memories together" },
-    { image: "images/couple5.JPG", caption: "A promise of forever" },
-    { image: "images/couple6.JPG", caption: "Two hearts, one journey" },
-    { image: "images/couple7.jpg", caption: "A special moment" },
-    { image: "images/couple8.JPG", caption: "Happiness together" },
-    { image: "images/couple9.JPG", caption: "Our story continues" }
+    {
+      image: "images/couple1.JPG",
+      caption: "Our beautiful journey"
+    },
+    {
+      image: "images/couple2.JPG",
+      caption: "A moment of love"
+    },
+    {
+      image: "images/couple3.JPG",
+      caption: "Together forever"
+    },
+    {
+      image: "images/couple4.JPG",
+      caption: "Memories together"
+    },
+    {
+      image: "images/couple5.JPG",
+      caption: "A promise of forever"
+    },
+    {
+      image: "images/couple6.JPG",
+      caption: "Two hearts, one journey"
+    },
+    {
+      image: "images/couple7.jpg",
+      caption: "A special moment"
+    },
+    {
+      image: "images/couple8.JPG",
+      caption: "Happiness together"
+    },
+    {
+      image: "images/couple9.JPG",
+      caption: "Our story continues"
+    }
   ],
 
   // ------------------------------------------------------------------------
   // OUR STORY TIMELINE
-  // Retained for possible restoration.
-  // The visible Story section will be hidden separately in index.html.
+  // Retained for possible future restoration.
+  // Keep the Story section hidden separately in index.html.
   // ------------------------------------------------------------------------
   story: [
     {
@@ -178,6 +216,8 @@ const WEDDING_CONFIG = {
 
   // ------------------------------------------------------------------------
   // VENUE / TRAVEL
+  // Railway and hotel details are retained for possible future restoration.
+  // Their HTML sections can remain commented out.
   // ------------------------------------------------------------------------
   travel: {
     parking: "Ample on-site parking available at Milan Hall premises.",
@@ -185,15 +225,23 @@ const WEDDING_CONFIG = {
     railway: "Nearest railway station: Chimur Railway Station, approx. 2 km from venue.",
 
     hotels: [
-      { name: "Hotel Regency Inn", distance: "1.8 km from venue" },
-      { name: "Chandrapur Residency", distance: "3.2 km from venue" },
-      { name: "Milan Guest House", distance: "0.5 km from venue" }
+      {
+        name: "Hotel Regency Inn",
+        distance: "1.8 km from venue"
+      },
+      {
+        name: "Chandrapur Residency",
+        distance: "3.2 km from venue"
+      },
+      {
+        name: "Milan Guest House",
+        distance: "0.5 km from venue"
+      }
     ]
   },
 
   // ------------------------------------------------------------------------
   // RSVP
-  // Retained temporarily for compatibility with existing JavaScript.
   // ------------------------------------------------------------------------
   rsvp: {
     whatsappNumber: "917776037673"
@@ -207,12 +255,15 @@ const WEDDING_CONFIG = {
   },
 
   // ------------------------------------------------------------------------
-  // QUOTES (rotating)
+  // QUOTES
   // ------------------------------------------------------------------------
   quotes: [
     "\u0938\u092A\u094D\u0924\u092A\u0926\u0940 \u0938\u0902\u0917 \u091A\u0932\u0924\u093E \u0938\u093E\u0925 \u091C\u0928\u094D\u092E\u094B\u091C\u0928\u094D\u092E\u0940\u091A\u093E \u2014 seven steps taken together, a bond for lifetimes.",
+
     "Two souls, one journey, blessed by family and destiny.",
+
     "In the presence of fire and family, two hearts become one.",
+
     "A love written by fate, blessed by elders, celebrated by all."
   ],
 
@@ -235,8 +286,11 @@ const WEDDING_CONFIG = {
   // ------------------------------------------------------------------------
   seo: {
     title: "Shiva \u2764 Rasika | Wedding Invitation",
+
     description: "Join Shiva Kapse and Rasika Pise for their wedding on 18 December 2026 at Milan Hall, Chimur, and reception on 19 December 2026 at Amrut Celebrations, Yavatmal.",
+
     keywords: "Shiva Kapse, Rasika Pise, wedding invitation, Chimur wedding, Milan Hall, Amrut Celebrations Yavatmal",
+
     ogImage: "images/couple1.JPG"
   }
 
