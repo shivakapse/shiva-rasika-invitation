@@ -63,6 +63,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
 
 <link rel="stylesheet" href="style.css">
+<!-- Keep disabled navigation items hidden even if an older menu is cached or restored. -->
+<style>
+  #navLinks a[href="#story"],
+  #navLinks a[href="#gallery"] {
+    display: none !important;
+  }
+</style>
 </head>
 <body data-theme="light">
 
