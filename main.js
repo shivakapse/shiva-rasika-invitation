@@ -393,65 +393,68 @@ if ($('#galleryGrid') && $('#lightbox')) {
     });
   })();
 
-  
-/* ---------------------------------------------------------------- */
-/* 11. VENUE                                                         */
-/* ---------------------------------------------------------------- */
 
-// WEDDING VENUE — MILAN HALL
-$('#venueAddress').textContent = C.wedding.venueAddress;
-$('#venueParking').textContent = C.travel.parking;
+  /* ---------------------------------------------------------------- */
+  /* 11. VENUE AND CITY TEMPERATURES                                   */
+  /* ---------------------------------------------------------------- */
 
-$('#venueMap').src =
-  `https://maps.google.com/maps?q=${C.wedding.mapsEmbedQuery}&output=embed`;
+  const venueAddress = $('#venueAddress');
+  const venueParking = $('#venueParking');
+  const venueNavBtn = $('#venueNavBtn');
 
-$('#venueNavBtn').href =
-  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(C.wedding.mapsQuery)}`;
+  if (venueAddress) {
+    venueAddress.textContent = C.wedding.venueAddress;
+  }
 
-// RECEPTION VENUE — AMRUT CELEBRATIONS
-// These elements must have the matching IDs in index.html.
+  if (venueParking) {
+    venueParking.textContent = C.travel.parking;
+  }
 
-const receptionDate = $('#receptionDate');
-const receptionVenue = $('#receptionVenue');
-const receptionAddress = $('#receptionAddress');
-const receptionTime = $('#receptionTime');
-const receptionNavBtn = $('#receptionNavBtn');
+  if (venueNavBtn) {
+    venueNavBtn.href =
+      `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(C.wedding.mapsQuery)}`;
+  }
 
-if (receptionDate) {
-  receptionDate.textContent = C.reception.dateDisplay;
-}
+  // Reception details
+  const receptionDate = $('#receptionDate');
+  const receptionTime = $('#receptionTime');
+  const receptionVenue = $('#receptionVenue');
+  const receptionAddress = $('#receptionAddress');
+  const receptionNavBtn = $('#receptionNavBtn');
 
-if (receptionVenue) {
-  receptionVenue.textContent = C.reception.venueName;
-}
+  if (receptionDate) receptionDate.textContent = C.reception.dateDisplay;
+  if (receptionTime) receptionTime.textContent = C.reception.time;
+  if (receptionVenue) receptionVenue.textContent = C.reception.venueName;
+  if (receptionAddress) receptionAddress.textContent = C.reception.venueAddress;
+  if (receptionNavBtn) receptionNavBtn.href = C.reception.mapsUrl;
 
-if (receptionAddress) {
-  receptionAddress.textContent = C.reception.venueAddress;
-}
+  // Current temperature for Chimur and Yavatmal
+  async function loadCityTemperature(latitude, longitude, targetId) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
 
-if (receptionTime) {
-  receptionTime.textContent = C.reception.time;
-}
+    try {
+      const url =
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&timezone=Asia%2FKolkata`;
 
-if (receptionNavBtn) {
-  receptionNavBtn.href = C.reception.mapsUrl;
-}
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Weather unavailable');
 
-  /* Live weather (Open-Meteo, no key needed) for Chimur, Chandrapur */
-  (function fetchWeather(){
-    const lat = 20.7333, lon = 79.3667; // Chimur, Chandrapur approx coords
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`)
-      .then(r=>r.json())
-      .then(data=>{
-        const t = data && data.current ? Math.round(data.current.temperature_2m) : null;
-        if(t!==null){
-          $('#weatherText').textContent = `Chimur right now: ${t}\u00B0C`;
-        }else{
-          $('#weatherText').textContent = 'Weather updates unavailable right now';
-        }
-      })
-      .catch(()=>{ $('#weatherText').textContent = 'Weather updates unavailable right now'; });
-  })();
+      const data = await response.json();
+      const temperature = data.current?.temperature_2m;
+
+      target.textContent =
+        Number.isFinite(temperature)
+          ? `${Math.round(temperature)}°C`
+          : 'Currently unavailable';
+
+    } catch (error) {
+      target.textContent = 'Currently unavailable';
+    }
+  }
+
+  loadCityTemperature(20.7333, 79.3667, 'weatherChimur');
+  loadCityTemperature(20.3932, 78.1320, 'weatherYavatmal');
 
   /* ---------------------------------------------------------------- */
   /* 12. QUOTE STRIP (typing animation, rotating)                      */
