@@ -249,82 +249,75 @@
 
     <div class="venue-grid" style="margin-top:44px; grid-template-columns:1fr;">
 
-      <!-- VENUE INFORMATION -->
-      <div class="venue-info reveal">
 
-        <!-- WEDDING VENUE: MILAN HALL -->
-        <h3>Wedding Venue</h3>
+<!-- VENUE INFORMATION -->
+<div class="venue-info reveal">
 
-        <div class="venue-row">
-          <i class="fa-solid fa-location-dot"></i>
-          <div>
-            <div class="label">Milan Hall</div>
-            <div class="value" id="venueAddress"></div>
-          </div>
-        </div>
+  <!-- WEDDING VENUE: MILAN HALL -->
+  <h3>Wedding Venue</h3>
 
+  <div class="venue-row">
+    <i class="fa-solid fa-location-dot"></i>
+    <div>
+      <div class="label">Milan Hall</div>
+      <div class="value" id="venueAddress"></div>
+    </div>
+  </div>
 
-        <!-- RAILWAY STATION - TEMPORARILY HIDDEN
-        <div class="venue-row">
-          <i class="fa-solid fa-train"></i>
-          <div>
-            <div class="label">Railway Station</div>
-            <div class="value" id="venueRailway"></div>
-          </div>
-        </div>
-        -->
+  <a
+    class="venue-nav-btn"
+    id="venueNavBtn"
+    target="_blank"
+    rel="noopener">
+    <i class="fa-solid fa-diamond-turn-right"></i>
+    Navigate to Wedding Venue
+  </a>
 
-        <!-- NEARBY STAYS - TEMPORARILY HIDDEN
-        <div class="venue-row">
-          <i class="fa-solid fa-hotel"></i>
-          <div>
-            <div class="label">Nearby Stays</div>
-            <ul class="hotel-list" id="hotelList"></ul>
-          </div>
-        </div>
-        -->
+  <!-- RECEPTION VENUE -->
+  <div class="venue-divider"></div>
 
-        <a
-          class="venue-nav-btn"
-          id="venueNavBtn"
-          target="_blank"
-          rel="noopener">
-          <i class="fa-solid fa-diamond-turn-right"></i>
-          Navigate to Wedding Venue
-        </a>
+  <h3>Reception Venue</h3>
 
-        <!-- RECEPTION VENUE -->
-        <div class="venue-divider"></div>
+  <div class="venue-row">
+    <i class="fa-solid fa-location-dot"></i>
+    <div>
+      <div class="label" id="receptionVenue"></div>
+      <div class="value" id="receptionAddress"></div>
+    </div>
+  </div>
 
-        <h3>Reception Venue</h3>
+  <a
+    class="venue-nav-btn"
+    id="receptionNavBtn"
+    target="_blank"
+    rel="noopener">
+    <i class="fa-solid fa-diamond-turn-right"></i>
+    Navigate to Reception Venue
+  </a>
 
-        <div class="venue-row">
-          <i class="fa-solid fa-calendar-days"></i>
-          <div>
-            <div class="label">Date & Time</div>
-            <div class="value">
-              <span id="receptionDate"></span> ·
-              <span id="receptionTime"></span>
-            </div>
-          </div>
-        </div>
+  <!-- WEATHER -->
+  <div class="venue-divider"></div>
 
-        <div class="venue-row">
-          <i class="fa-solid fa-location-dot"></i>
-          <div>
-            <div class="label" id="receptionVenue"></div>
-            <div class="value" id="receptionAddress"></div>
-          </div>
-        </div>
+  <h3>Weather Information</h3>
 
-        <a
-          class="venue-nav-btn"
-          id="receptionNavBtn"
-          target="_blank"
-          rel="noopener">
-          <i class="fa-solid fa-diamond-turn-right"></i>
-          Navigate to Reception Venue
-        </a>
+  <div class="venue-row">
+    <i class="fa-solid fa-cloud-sun"></i>
+    <div>
+      <div class="label">Chimur Temperature</div>
+      <div class="value" id="weatherChimur">Loading...</div>
+    </div>
+  </div>
+
+  <div class="venue-row">
+    <i class="fa-solid fa-cloud-sun"></i>
+    <div>
+      <div class="label">Yavatmal Temperature</div>
+      <div class="value" id="weatherYavatmal">Loading...</div>
+    </div>
+  </div>
+
+</div>
+
 
         <!-- LIVE TEMPERATURE FOR BOTH EVENT CITIES -->
         <div class="weather-chip" id="weatherChip" style="display:flex; flex-direction:column; align-items:flex-start; gap:10px; width:100%; box-sizing:border-box;">

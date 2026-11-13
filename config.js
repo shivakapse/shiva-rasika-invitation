@@ -169,16 +169,17 @@ const WEDDING_CONFIG = {
   // ------------------------------------------------------------------------
   // EVENTS
   // ------------------------------------------------------------------------
-  events: [
-    {
-      name: "Engagement",
-      date: "2026-12-13",
-      dateDisplay: "13 December 2026",
-      time: "12:00 PM",
-      description: "Join Shiva and Rasika as they celebrate their engagement.",
-      icon: "fa-ring",
-      color: "#D4AF37"
-    },
+  events: [    
+  {
+    name: "Engagement",
+    date: "2026-12-13",
+    dateDisplay: "13 December 2026",
+    time: "12:00 PM",
+    description: "Join Shiva and Rasika as they celebrate their engagement.",
+    icon: "fa-ring",
+    color: "#D4AF37"
+  },
+
     {
       name: "Haldi",
       date: "2026-12-17",
