@@ -394,67 +394,107 @@ if ($('#galleryGrid') && $('#lightbox')) {
   })();
 
 
-  /* ---------------------------------------------------------------- */
-  /* 11. VENUE AND CITY TEMPERATURES                                   */
-  /* ---------------------------------------------------------------- */
 
-  const venueAddress = $('#venueAddress');
-  const venueParking = $('#venueParking');
-  const venueNavBtn = $('#venueNavBtn');
+/* ---------------------------------------------------------------- */
+/* 11. VENUE AND CITY TEMPERATURES                                   */
+/* ---------------------------------------------------------------- */
 
-  if (venueAddress) {
-    venueAddress.textContent = C.wedding.venueAddress;
-  }
+// ================================================================
+// WEDDING VENUE - MILAN HALL, CHIMUR
+// ================================================================
 
-  if (venueParking) {
-    venueParking.textContent = C.travel.parking;
-  }
+const venueAddress = $('#venueAddress');
+const venueNavBtn = $('#venueNavBtn');
 
-  if (venueNavBtn) {
-    venueNavBtn.href =
-      `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(C.wedding.mapsQuery)}`;
-  }
+if (venueAddress) {
+  venueAddress.textContent = C.wedding.venueAddress;
+}
 
-  // Reception details
-  const receptionDate = $('#receptionDate');
-  const receptionTime = $('#receptionTime');
-  const receptionVenue = $('#receptionVenue');
-  const receptionAddress = $('#receptionAddress');
-  const receptionNavBtn = $('#receptionNavBtn');
+if (venueNavBtn) {
+  venueNavBtn.href =
+    `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(C.wedding.mapsQuery)}&travelmode=driving`;
 
-  if (receptionDate) receptionDate.textContent = C.reception.dateDisplay;
-  if (receptionTime) receptionTime.textContent = C.reception.time;
-  if (receptionVenue) receptionVenue.textContent = C.reception.venueName;
-  if (receptionAddress) receptionAddress.textContent = C.reception.venueAddress;
-  if (receptionNavBtn) receptionNavBtn.href = C.reception.mapsUrl;
+  venueNavBtn.target = '_blank';
+  venueNavBtn.rel = 'noopener noreferrer';
+}
 
-  // Current temperature for Chimur and Yavatmal
-  async function loadCityTemperature(latitude, longitude, targetId) {
-    const target = document.getElementById(targetId);
-    if (!target) return;
+// ================================================================
+// RECEPTION VENUE - AMRUT CELEBRATIONS, YAVATMAL
+// ================================================================
 
-    try {
-      const url =
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&timezone=Asia%2FKolkata`;
+const receptionVenue = $('#receptionVenue');
+const receptionAddress = $('#receptionAddress');
+const receptionNavBtn = $('#receptionNavBtn');
 
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Weather unavailable');
+if (receptionVenue) {
+  receptionVenue.textContent = C.reception.venueName;
+}
 
-      const data = await response.json();
-      const temperature = data.current?.temperature_2m;
+if (receptionAddress) {
+  receptionAddress.textContent = C.reception.venueAddress;
+}
 
-      target.textContent =
-        Number.isFinite(temperature)
-          ? `${Math.round(temperature)}°C`
-          : 'Currently unavailable';
+if (receptionNavBtn) {
+  const receptionDestination =
+    `${C.reception.venueName}, ${C.reception.venueAddress}`;
 
-    } catch (error) {
+  receptionNavBtn.href =
+    `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(receptionDestination)}&travelmode=driving`;
+
+  receptionNavBtn.target = '_blank';
+  receptionNavBtn.rel = 'noopener noreferrer';
+}
+
+// ================================================================
+// LIVE CITY TEMPERATURES - CHIMUR AND YAVATMAL
+// ================================================================
+
+async function loadCityTemperature(latitude, longitude, targetId) {
+  const target = document.getElementById(targetId);
+
+  if (!target) return;
+
+  target.textContent = 'Loading...';
+
+  try {
+    const url =
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&timezone=Asia%2FKolkata`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error('Weather service unavailable');
+    }
+
+    const data = await response.json();
+    const temperature = data.current?.temperature_2m;
+
+    if (typeof temperature === 'number' && Number.isFinite(temperature)) {
+      target.textContent = `${Math.round(temperature)}°C`;
+    } else {
       target.textContent = 'Currently unavailable';
     }
-  }
 
-  loadCityTemperature(20.7333, 79.3667, 'weatherChimur');
-  loadCityTemperature(20.3932, 78.1320, 'weatherYavatmal');
+  } catch (error) {
+    console.error(`Temperature loading failed for ${targetId}:`, error);
+    target.textContent = 'Currently unavailable';
+  }
+}
+
+// Chimur coordinates
+loadCityTemperature(
+  20.7333,
+  79.3667,
+  'weatherChimur'
+);
+
+// Yavatmal coordinates
+loadCityTemperature(
+  20.3932,
+  78.1320,
+  'weatherYavatmal'
+);
+
 
   /* ---------------------------------------------------------------- */
   /* 12. QUOTE STRIP (typing animation, rotating)                      */
