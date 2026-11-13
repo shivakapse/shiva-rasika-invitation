@@ -247,31 +247,39 @@
     window.open(url,'_blank');
   });
 
-  /* ---------------------------------------------------------------- */
-  /* 8. OUR STORY TIMELINE                                             */
-  /* ---------------------------------------------------------------- */
-  (function buildStory(){
-    const el = $('#storyTimeline');
-    C.story.forEach(item=>{
-      const div = document.createElement('div');
-      div.className = 'timeline-item';
-      div.innerHTML = `
-        <div class="timeline-dot"></div>
-        <div class="timeline-media reveal"><div class="ph"><span><i class="fa-solid ${item.icon}"></i></span></div></div>
-        <div class="timeline-card reveal">
-          <div class="tl-icon"><i class="fa-solid ${item.icon}"></i></div>
-          <h3>${item.title}</h3>
-          <div class="tl-date">${item.date}</div>
-          <p>${item.text}</p>
-        </div>`;
-      el.appendChild(div);
-    });
-  })();
+/* 8. OUR STORY TIMELINE
+   Temporarily disabled. Original config and HTML can be restored later.
+*/
+(function buildStory(){
+  const el = $('#storyTimeline');
+
+  if (!el || !C.story || !C.story.length) return;
+
+  C.story.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'timeline-item';
+    div.innerHTML = `
+      <div class="timeline-dot"></div>
+      <div class="timeline-media reveal">
+        <div class="ph"><span><i class="fa-solid ${item.icon}"></i></span></div>
+      </div>
+      <div class="timeline-card reveal">
+        <div class="tl-icon"><i class="fa-solid ${item.icon}"></i></div>
+        <h3>${item.title}</h3>
+        <div class="tl-date">${item.date}</div>
+        <p>${item.text}</p>
+      </div>`;
+    el.appendChild(div);
+  });
+})();
 
 
-  /* ---------------------------------------------------------------- */
-  /* 9. GALLERY + LIGHTBOX                                             */
-  /* ---------------------------------------------------------------- */
+/* 9. GALLERY + LIGHTBOX
+   Temporarily disabled when the Gallery HTML is hidden.
+   Original functionality is retained for future restoration.
+*/
+
+if ($('#galleryGrid') && $('#lightbox')) {
 
   let galleryImages = [];
 
@@ -290,10 +298,6 @@
       img.alt = `Shiva and Rasika - Photo ${i + 1}`;
       img.loading = 'lazy';
 
-      img.onerror = function(){
-        console.error('Gallery image failed to load:', src);
-      };
-
       item.appendChild(img);
 
       const overlay = document.createElement('div');
@@ -302,7 +306,6 @@
       item.appendChild(overlay);
 
       item.addEventListener('click', () => openLightbox(i));
-
       grid.appendChild(item);
     });
   })();
@@ -348,7 +351,6 @@
     if(e.key === 'ArrowRight') $('#lightboxNext').click();
   });
 
-  // Mobile swipe support
   (function(){
     let x0 = null;
     const lb = $('#lightbox');
@@ -370,6 +372,8 @@
     });
   })();
 
+}
+
   /* ---------------------------------------------------------------- */
   /* 10. EVENTS                                                        */
   /* ---------------------------------------------------------------- */
@@ -389,22 +393,49 @@
     });
   })();
 
-  /* ---------------------------------------------------------------- */
-  /* 11. VENUE                                                         */
-  /* ---------------------------------------------------------------- */
-  $('#venueAddress').textContent = C.wedding.venueAddress;
-  $('#venueParking').textContent = C.travel.parking;
-  $('#venueRailway').textContent = C.travel.railway;
-  $('#venueMap').src = `https://maps.google.com/maps?q=${C.wedding.mapsEmbedQuery}&output=embed`;
-  $('#venueNavBtn').href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(C.wedding.mapsQuery)}`;
-  (function buildHotels(){
-    const ul = $('#hotelList');
-    C.travel.hotels.forEach(h=>{
-      const li = document.createElement('li');
-      li.innerHTML = `<span>${h.name}</span><span>${h.distance}</span>`;
-      ul.appendChild(li);
-    });
-  })();
+  
+/* ---------------------------------------------------------------- */
+/* 11. VENUE                                                         */
+/* ---------------------------------------------------------------- */
+
+// WEDDING VENUE — MILAN HALL
+$('#venueAddress').textContent = C.wedding.venueAddress;
+$('#venueParking').textContent = C.travel.parking;
+
+$('#venueMap').src =
+  `https://maps.google.com/maps?q=${C.wedding.mapsEmbedQuery}&output=embed`;
+
+$('#venueNavBtn').href =
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(C.wedding.mapsQuery)}`;
+
+// RECEPTION VENUE — AMRUT CELEBRATIONS
+// These elements must have the matching IDs in index.html.
+
+const receptionDate = $('#receptionDate');
+const receptionVenue = $('#receptionVenue');
+const receptionAddress = $('#receptionAddress');
+const receptionTime = $('#receptionTime');
+const receptionNavBtn = $('#receptionNavBtn');
+
+if (receptionDate) {
+  receptionDate.textContent = C.reception.dateDisplay;
+}
+
+if (receptionVenue) {
+  receptionVenue.textContent = C.reception.venueName;
+}
+
+if (receptionAddress) {
+  receptionAddress.textContent = C.reception.venueAddress;
+}
+
+if (receptionTime) {
+  receptionTime.textContent = C.reception.time;
+}
+
+if (receptionNavBtn) {
+  receptionNavBtn.href = C.reception.mapsUrl;
+}
 
   /* Live weather (Open-Meteo, no key needed) for Chimur, Chandrapur */
   (function fetchWeather(){

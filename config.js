@@ -42,6 +42,18 @@ const WEDDING_CONFIG = {
   },
 
   // ------------------------------------------------------------------------
+  // RECEPTION DETAILS
+  // ------------------------------------------------------------------------
+  reception: {
+    date: "2026-12-19",
+    dateDisplay: "19 December 2026",
+    time: "6:30 PM onwards",
+    venueName: "Amrut Celebrations",
+    venueAddress: "Wadgaon Road, Yavatmal, Maharashtra",
+    mapsUrl: "https://www.google.com/search?kgmid=%2Fg%2F11h_yb70jn"
+  },
+
+  // ------------------------------------------------------------------------
   // OPENING / SPLASH
   // ------------------------------------------------------------------------
   splash: {
@@ -67,22 +79,24 @@ const WEDDING_CONFIG = {
 
   // ------------------------------------------------------------------------
   // HERO SLIDER
+  // Retained independently of the Photo Gallery section.
   // ------------------------------------------------------------------------
-  
-heroSlides: [
-  { image: "images/couple1.JPG", caption: "Our beautiful journey" },
-  { image: "images/couple2.JPG", caption: "A moment of love" },
-  { image: "images/couple3.JPG", caption: "Together forever" },
-  { image: "images/couple4.JPG", caption: "Memories together" },
-  { image: "images/couple5.JPG", caption: "A promise of forever" },
-  { image: "images/couple6.JPG", caption: "Two hearts, one journey" },
-  { image: "images/couple7.jpg", caption: "A special moment" },
-  { image: "images/couple8.JPG", caption: "Happiness together" },
-  { image: "images/couple9.JPG", caption: "Our story continues" }
-],
+  heroSlides: [
+    { image: "images/couple1.JPG", caption: "Our beautiful journey" },
+    { image: "images/couple2.JPG", caption: "A moment of love" },
+    { image: "images/couple3.JPG", caption: "Together forever" },
+    { image: "images/couple4.JPG", caption: "Memories together" },
+    { image: "images/couple5.JPG", caption: "A promise of forever" },
+    { image: "images/couple6.JPG", caption: "Two hearts, one journey" },
+    { image: "images/couple7.jpg", caption: "A special moment" },
+    { image: "images/couple8.JPG", caption: "Happiness together" },
+    { image: "images/couple9.JPG", caption: "Our story continues" }
+  ],
 
   // ------------------------------------------------------------------------
   // OUR STORY TIMELINE
+  // Retained for possible restoration.
+  // The visible Story section will be hidden separately in index.html.
   // ------------------------------------------------------------------------
   story: [
     {
@@ -109,8 +123,8 @@ heroSlides: [
     {
       title: "Wedding",
       date: "18 December 2026 · 6:10 PM",
-      text: "Shiva and Rasika will begin their beautiful journey of married life",
-      image: "images/0B5A1764.JPG",
+      text: "Shiva and Rasika will begin their beautiful journey of married life.",
+      image: "images/couple4.JPG",
       icon: "fa-om"
     }
   ],
@@ -142,11 +156,10 @@ heroSlides: [
       date: "2026-12-18",
       dateDisplay: "18 December 2026",
       time: "6:10 PM",
-      description: "Shiva and Rasika take their wedding vows at Milan Hall, Chimur.",
+      description: "Shiva and Rasika will exchange their wedding vows at Milan Hall, Chimur.",
       icon: "fa-om",
       color: "#D4AF37"
     },
-    
     {
       name: "Reception",
       date: "2026-12-19",
@@ -156,7 +169,6 @@ heroSlides: [
       icon: "fa-champagne-glasses",
       color: "#C67A89"
     }
-
   ],
 
   // ------------------------------------------------------------------------
@@ -169,7 +181,9 @@ heroSlides: [
   // ------------------------------------------------------------------------
   travel: {
     parking: "Ample on-site parking available at Milan Hall premises.",
+
     railway: "Nearest railway station: Chimur Railway Station, approx. 2 km from venue.",
+
     hotels: [
       { name: "Hotel Regency Inn", distance: "1.8 km from venue" },
       { name: "Chandrapur Residency", distance: "3.2 km from venue" },
@@ -221,8 +235,8 @@ heroSlides: [
   // ------------------------------------------------------------------------
   seo: {
     title: "Shiva \u2764 Rasika | Wedding Invitation",
-    description: "Join Shiva Kapse and Rasika Pise as they celebrate their wedding on 18th December 2026 at 6:10 PM at Milan Hall, Chimur, Chandrapur.",
-    keywords: "Shiva Kapse, Rasika Pise, wedding invitation, Chimur wedding, Milan Hall wedding",
+    description: "Join Shiva Kapse and Rasika Pise for their wedding on 18 December 2026 at Milan Hall, Chimur, and reception on 19 December 2026 at Amrut Celebrations, Yavatmal.",
+    keywords: "Shiva Kapse, Rasika Pise, wedding invitation, Chimur wedding, Milan Hall, Amrut Celebrations Yavatmal",
     ogImage: "images/couple1.JPG"
   }
 
