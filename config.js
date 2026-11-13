@@ -146,15 +146,17 @@ heroSlides: [
       icon: "fa-om",
       color: "#D4AF37"
     },
+    
     {
       name: "Reception",
       date: "2026-12-19",
       dateDisplay: "19 December 2026",
-      time: "Time and venue to be announced",
-      description: "Celebrate the newly-wed couple at their reception.",
+      time: "6:30 PM onwards",
+      description: "Join Shiva and Rasika for their wedding reception at Amrut Celebrations, Wadgaon Road, Yavatmal.",
       icon: "fa-champagne-glasses",
       color: "#C67A89"
     }
+
   ],
 
   // ------------------------------------------------------------------------

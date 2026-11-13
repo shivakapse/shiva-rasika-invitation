@@ -171,10 +171,11 @@
       </button>
     </div>
   </section>
-
   <!-- ================================================================ -->
   <!-- OUR STORY -->
   <!-- ================================================================ -->
+  <!-- 
+
   <section id="story">
     <div class="container">
       <div style="text-align:center;">
@@ -184,12 +185,12 @@
       <div class="divider reveal"><span class="line"></span><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg><span class="line"></span></div>
       <div class="timeline" id="storyTimeline"></div>
     </div>
-  </section>
+  </section> -->
 
   <!-- ================================================================ -->
   <!-- GALLERY -->
   <!-- ================================================================ -->
-  <section id="gallery" style="background:var(--cream);">
+  <!-- <section id="gallery" style="background:var(--cream);">
     <div class="container">
       <div style="text-align:center;">
         <div class="eyebrow reveal">Moments We Cherish</div>
@@ -198,15 +199,15 @@
       </div>
       <div class="gallery-grid" id="galleryGrid"></div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Lightbox -->
-  <div id="lightbox">
+  <!-- <div id="lightbox">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
     <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
     <img id="lightboxImg" src="" alt="Gallery photo">
     <button class="lightbox-nav next" id="lightboxNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
-  </div>
+  </div> -->
 
   <!-- ================================================================ -->
   <!-- EVENTS -->
@@ -222,33 +223,129 @@
     </div>
   </section>
 
-  <!-- ================================================================ -->
-  <!-- VENUE -->
-  <!-- ================================================================ -->
-  <section id="venue">
-    <div class="container">
-      <div style="text-align:center;">
-        <div class="eyebrow reveal">Find Your Way To Us</div>
-        <h2 class="section-title reveal">The Venue</h2>
+  
+<!-- ================================================================ -->
+<!-- VENUE -->
+<!-- ================================================================ -->
+<section id="venue">
+  <div class="container">
+
+    <div style="text-align:center;">
+      <div class="eyebrow reveal">Find Your Way To Us</div>
+      <h2 class="section-title reveal">The Venue</h2>
+    </div>
+
+    <div class="venue-grid" style="margin-top:44px;">
+
+      <!-- WEDDING VENUE MAP -->
+      <div class="venue-map reveal">
+        <iframe
+          id="venueMap"
+          src=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Wedding Venue Map">
+        </iframe>
       </div>
-      <div class="venue-grid" style="margin-top:44px;">
-        <div class="venue-map reveal">
-          <iframe id="venueMap" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Venue Map"></iframe>
+
+      <!-- VENUE INFORMATION -->
+      <div class="venue-info reveal">
+
+        <!-- WEDDING VENUE: MILAN HALL -->
+        <h3>Wedding Venue</h3>
+
+        <div class="venue-row">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <div class="label">Milan Hall</div>
+            <div class="value" id="venueAddress"></div>
+          </div>
         </div>
-        <div class="venue-info reveal">
-          <h3>Milan Hall</h3>
-          <div class="venue-row"><i class="fa-solid fa-location-dot"></i><div><div class="label">Address</div><div class="value" id="venueAddress"></div></div></div>
-          <div class="venue-row"><i class="fa-solid fa-square-parking"></i><div><div class="label">Parking</div><div class="value" id="venueParking"></div></div></div>
-          <div class="venue-row"><i class="fa-solid fa-train"></i><div><div class="label">Railway Station</div><div class="value" id="venueRailway"></div></div></div>
-          <div class="venue-row"><i class="fa-solid fa-hotel"></i><div><div class="label">Nearby Stays</div>
+
+        <div class="venue-row">
+          <i class="fa-solid fa-square-parking"></i>
+          <div>
+            <div class="label">Parking</div>
+            <div class="value" id="venueParking"></div>
+          </div>
+        </div>
+
+        <!-- RAILWAY STATION - TEMPORARILY HIDDEN
+        <div class="venue-row">
+          <i class="fa-solid fa-train"></i>
+          <div>
+            <div class="label">Railway Station</div>
+            <div class="value" id="venueRailway"></div>
+          </div>
+        </div>
+        -->
+
+        <!-- NEARBY STAYS - TEMPORARILY HIDDEN
+        <div class="venue-row">
+          <i class="fa-solid fa-hotel"></i>
+          <div>
+            <div class="label">Nearby Stays</div>
             <ul class="hotel-list" id="hotelList"></ul>
-          </div></div>
-          <a class="venue-nav-btn" id="venueNavBtn" target="_blank" rel="noopener"><i class="fa-solid fa-diamond-turn-right"></i> Navigate on Google Maps</a>
-          <div class="weather-chip" id="weatherChip"><i class="fa-solid fa-cloud-sun"></i><span id="weatherText">Checking weather for the big day&hellip;</span></div>
+          </div>
         </div>
+        -->
+
+        <a
+          class="venue-nav-btn"
+          id="venueNavBtn"
+          target="_blank"
+          rel="noopener">
+          <i class="fa-solid fa-diamond-turn-right"></i>
+          Navigate to Wedding Venue
+        </a>
+
+        <!-- RECEPTION VENUE -->
+        <div class="venue-divider"></div>
+
+        <h3>Reception Venue</h3>
+
+        <div class="venue-row">
+          <i class="fa-solid fa-calendar-days"></i>
+          <div>
+            <div class="label">Date & Time</div>
+            <div class="value">
+              19 December 2026 · 6:30 PM onwards
+            </div>
+          </div>
+        </div>
+
+        <div class="venue-row">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <div class="label">Amrut Celebrations</div>
+            <div class="value">
+              Wadgaon Road, Yavatmal, Maharashtra
+            </div>
+          </div>
+        </div>
+
+        <a
+          class="venue-nav-btn"
+          href="https://www.google.com/search?kgmid=%2Fg%2F11h_yb70jn"
+          target="_blank"
+          rel="noopener">
+          <i class="fa-solid fa-diamond-turn-right"></i>
+          Navigate to Reception Venue
+        </a>
+
+        <!-- WEATHER -->
+        <div class="weather-chip" id="weatherChip">
+          <i class="fa-solid fa-cloud-sun"></i>
+          <span id="weatherText">
+            Checking weather for the big day&hellip;
+          </span>
+        </div>
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ================================================================ -->
   <!-- QUOTE STRIP -->
