@@ -90,7 +90,6 @@ const WEDDING_CONFIG = {
   // ------------------------------------------------------------------------
   // HERO SLIDER
   // These images are independent of the Photo Gallery section.
-  // Keep filenames and letter case exactly as uploaded to GitHub.
   // ------------------------------------------------------------------------
   heroSlides: [
     {
@@ -175,7 +174,7 @@ const WEDDING_CONFIG = {
       name: "Engagement",
       date: "2026-12-13",
       dateDisplay: "13 December 2026",
-      time: "Time to be announced",
+      time: "12:00 PM",
       description: "Join Shiva and Rasika as they celebrate their engagement.",
       icon: "fa-ring",
       color: "#D4AF37"
@@ -216,8 +215,8 @@ const WEDDING_CONFIG = {
 
   // ------------------------------------------------------------------------
   // VENUE / TRAVEL
-  // Railway and hotel details are retained for possible future restoration.
-  // Their HTML sections can remain commented out.
+  // Retained for compatibility and possible future restoration.
+  // Parking, railway and hotel sections can remain hidden in index.html.
   // ------------------------------------------------------------------------
   travel: {
     parking: "Ample on-site parking available at Milan Hall premises.",
