@@ -169,48 +169,122 @@
     themeToggle.innerHTML = isDark ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
   });
 
-  /* ---------------------------------------------------------------- */
-  /* 6. HERO SLIDER                                                    */
-  /* ---------------------------------------------------------------- */
-  $('#heroGroom').textContent = C.couple.groom.firstName;
-  $('#heroBride').textContent = C.couple.bride.firstName;
-  $('#heroDate').innerHTML = '<i class="fa-regular fa-calendar"></i>&nbsp; '+C.wedding.dateDisplay;
-  $('#heroVenue').innerHTML = '<i class="fa-solid fa-location-dot"></i>&nbsp; '+C.wedding.venueName;
 
-  (function buildHeroSlider(){
-    const wrap = $('#heroSlides');
-    const dots = $('#heroDots');
-    C.heroSlides.forEach((slide,i)=>{
-      const div = document.createElement('div');
-      div.className = 'hero-slide placeholder' + (i===0?' active':'');
-      // Real photo would use: div.style.backgroundImage = `url(${slide.image})`;
-      // A gradient placeholder is used until real images are supplied in /images.
-      div.innerHTML = `<span style="position:absolute;bottom:14%;left:50%;translate:-50% 0;font-family:var(--font-script);font-size:2.2rem;color:rgba(232,204,122,.5);">Shiva &amp; Rasika</span>`;
-      wrap.appendChild(div);
+/* ---------------------------------------------------------------- */
+/* 6. HERO SLIDER                                                    */
+/* ---------------------------------------------------------------- */
 
-      const dot = document.createElement('button');
-      if(i===0) dot.classList.add('active');
-      dot.addEventListener('click',()=>goToSlide(i));
-      dots.appendChild(dot);
-    });
+// Couple names
+$('#heroGroom').textContent = C.couple.groom.firstName;
+$('#heroBride').textContent = C.couple.bride.firstName;
 
-    let current = 0;
-    const slides = $$('.hero-slide',wrap);
-    const dotEls = $$('button',dots);
+// Wedding date and venue
+$('#heroDate').innerHTML =
+  '<i class="fa-regular fa-calendar"></i>&nbsp; ' +
+  C.wedding.dateDisplay;
 
-    function goToSlide(i){
-      slides[current].classList.remove('active');
-      dotEls[current].classList.remove('active');
-      current = i;
-      slides[current].classList.add('active');
-      dotEls[current].classList.add('active');
+$('#heroVenue').innerHTML =
+  '<i class="fa-solid fa-location-dot"></i>&nbsp; ' +
+  C.wedding.venueName;
+
+
+// Build Hero Photo Slider
+(function buildHeroSlider() {
+
+  const wrap = $('#heroSlides');
+  const dots = $('#heroDots');
+
+  if (!wrap || !dots || !Array.isArray(C.heroSlides) || !C.heroSlides.length) {
+    return;
+  }
+
+  wrap.innerHTML = '';
+  dots.innerHTML = '';
+
+  C.heroSlides.forEach((slide, i) => {
+
+    const div = document.createElement('div');
+
+    div.className = 'hero-slide' + (i === 0 ? ' active' : '');
+
+    // Actual couple photograph as background
+    div.style.backgroundImage = `
+      linear-gradient(
+        180deg,
+        rgba(45, 0, 12, 0.35),
+        rgba(45, 0, 12, 0.48),
+        rgba(45, 0, 12, 0.65)
+      ),
+      url("${slide.image}")
+    `;
+
+    div.style.backgroundSize = 'cover';
+    div.style.backgroundPosition = 'center 35%';
+    div.style.backgroundRepeat = 'no-repeat';
+
+    div.setAttribute('role', 'img');
+    div.setAttribute(
+      'aria-label',
+      slide.caption || 'Shiva and Rasika wedding photograph'
+    );
+
+    wrap.appendChild(div);
+
+
+    // Slider navigation dots
+    const dot = document.createElement('button');
+
+    dot.type = 'button';
+    dot.setAttribute(
+      'aria-label',
+      `Show wedding photograph ${i + 1}`
+    );
+
+    if (i === 0) {
+      dot.classList.add('active');
     }
-    function next(){ goToSlide((current+1)%slides.length); }
-    setInterval(next, 5200);
-  })();
 
-  makePetalLayer($('#heroPetals'),14,['\u2740','\u273F']);
-  makeSparkLayer($('#heroSparks'),22);
+    dot.addEventListener('click', () => goToSlide(i));
+
+    dots.appendChild(dot);
+
+  });
+
+
+  let current = 0;
+
+  const slides = $$('.hero-slide', wrap);
+  const dotEls = $$('button', dots);
+
+  function goToSlide(i) {
+
+    if (!slides.length) return;
+
+    slides[current].classList.remove('active');
+    dotEls[current].classList.remove('active');
+
+    current = i;
+
+    slides[current].classList.add('active');
+    dotEls[current].classList.add('active');
+  }
+
+  function next() {
+    goToSlide((current + 1) % slides.length);
+  }
+
+  // Automatically change photograph every 5.2 seconds
+  if (slides.length > 1) {
+    setInterval(next, 5200);
+  }
+
+})();
+
+
+// Decorative effects
+makePetalLayer($('#heroPetals'), 14, ['\u2740', '\u273F']);
+makeSparkLayer($('#heroSparks'), 22);
+
 
   /* ---------------------------------------------------------------- */
   /* 7. COUNTDOWN                                                      */

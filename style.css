@@ -900,44 +900,58 @@ footer{
 }
 
 
+
 /* =========================================================
-   VENUE SECTION - COUPLE PHOTO BACKGROUND
+   HERO PHOTO SLIDER - ROYAL WEDDING DESIGN
    ========================================================= */
 
-#venue {
+.hero {
   position: relative;
-  background:
-    linear-gradient(
-      rgba(255, 248, 241, 0.78),
-      rgba(255, 248, 241, 0.88)
-    ),
-    url("images/couple1.JPG") center 40% / cover no-repeat;
-  background-attachment: scroll;
-  padding-top: 70px;
-  padding-bottom: 70px;
-}
-
-#venue .venue-info {
-  background: rgba(255, 250, 245, 0.90);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 20px;
-  padding: 28px;
-}
-
-#venue .venue-map {
-  border-radius: 20px;
+  isolation: isolate;
   overflow: hidden;
+  background: #4b0716;
 }
 
-/* Mobile adjustment */
-@media (max-width: 768px) {
-  #venue {
-    background-position: center;
-  }
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
 
-  #venue .venue-info {
-    padding: 20px;
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(45, 0, 12, 0.25),
+    rgba(45, 0, 12, 0.40),
+    rgba(45, 0, 12, 0.60)
+  );
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-slide {
+    background-position: center center;
   }
 }
