@@ -275,11 +275,11 @@ reception: {
   guestBookSeed: [
     {
       name: "Kapse Family",
-      message: "Wishing Shiva and Rasika a lifetime of love and happiness."
+      message: "Wishing Shiva & Rasika a lifetime of love, happiness, and togetherness. May your journey ahead be blessed with endless joy and beautiful memories."
     },
     {
       name: "Pise Family",
-      message: "Our hearts are full. Welcome to the family, Shiva."
+      message: "May Shiva & Rasika's bond grow stronger with each passing day, bringing them endless joy, everlasting love, and a lifetime of togetherness."
     }
   ],
 
